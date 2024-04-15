@@ -23,7 +23,8 @@ module relief() {
 		// Place the design on top of the plate
 		translate([0,0,plate_thickness])
 			linear_extrude(height = design_thickness)
-				import(design_filename);
+				offset(delta=0.001)
+					import(design_filename);
 	}
 }
 
@@ -40,7 +41,8 @@ module intaglio() {
 			// Subtract the design from the top of the plate
 			translate([0, 0, plate_thickness - design_thickness])
 				linear_extrude(height = design_thickness)
-					import(design_filename);
+					offset(delta=0.001)
+						import(design_filename);
 		}
 	}
 }
@@ -57,7 +59,8 @@ module stencil() {
 	
 			// Subtract the design from the plate
 			linear_extrude(height = plate_thickness)
-				import(design_filename);
+				offset(delta=0.001)
+					import(design_filename);
 		}
 	}
 }
